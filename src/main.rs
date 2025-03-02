@@ -6,16 +6,30 @@
 
 use flight_os::println;
 use core::panic::PanicInfo;
+mod sim;
+
+
+
+pub fn setup(){
+    println!("Hello World{}", "!");
+}
+
+pub fn load_map_files(){
+    println!("Loading map files...");
+}
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
-    println!("Hello World{}", "!");
+    setup();
+    load_map_files();
 
     // Sleep 1 second (busy-wait)
     //flight_os::sleep(1_000_000);
     
     // Switch to 320x200 graphics mode and draw a centered white line
     flight_os::graphics::switch_to_graphics_mode();
+    sim::main();  // Call the main function from the `sim` module
+
     flight_os::graphics::draw_centered_line();
 
     // Draw a slightly shorter horizontal line below the first one using the new draw_line() function.
