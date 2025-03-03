@@ -15,6 +15,7 @@ pub mod vga_buffer;
 // Expose the graphics module.
 pub mod graphics;
 pub mod consts;
+pub mod executor;
 
 pub fn init() {
     gdt::init();

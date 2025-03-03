@@ -28,12 +28,12 @@ pub extern "C" fn _start() -> ! {
     
     // Switch to 320x200 graphics mode and draw a centered white line
     flight_os::graphics::switch_to_graphics_mode();
-    sim::main();  // Call the main function from the `sim` module
-
     flight_os::graphics::draw_centered_line();
 
     // Draw a slightly shorter horizontal line below the first one using the new draw_line() function.
     flight_os::graphics::draw_line((100, 110), (220, 110));
+
+    sim::main();  // Call the main function from the `sim` module
 
     flight_os::init();
 
